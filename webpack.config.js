@@ -16,7 +16,8 @@ module.exports = {
     filename: 'components/[name]/index.js',
     path: path.resolve(__dirname, 'dist'),
     library: ['Lego', '[name]'],
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    globalObject: 'this'
   },
   plugins: [new MiniCssExtractPlugin({
     filename: 'components/[name]/[name].css'
