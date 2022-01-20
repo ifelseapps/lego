@@ -10,7 +10,7 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["react", "react-hooks", "jsx-a11y", "prettier", "@typescript-eslint"],
+  "plugins": ["react", "react-hooks", "jsx-a11y", "prettier", "@typescript-eslint", "@bem-react"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -45,7 +45,19 @@
     "import/prefer-default-export": "off",
     "import/extensions": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "@bem-react/no-classname-runtime": "warn",
+    "@bem-react/whitelist-levels-imports": [
+      "error",
+      {
+        "defaultLevel": "common",
+        "whiteList": {
+          "common": ["common"],
+          "desktop": ["common", "desktop"],
+          "mobile": ["common", "mobile"]
+        }
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
