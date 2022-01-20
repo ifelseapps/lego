@@ -1,15 +1,17 @@
 {
-  "name": "lego",
-  "version": "1.0.0",
+  "name": "@ifelseapps/lego",
+  "version": "0.1.0",
   "description": "Design system",
-  "main": "index.js",
+  "types": "dist",
   "scripts": {
     "test": "jest --watchAll --json --outputFile=jest-test-results.json",
     "test:output": "jest --json --outputFile=jest-test-results.json",
     "prebuild:storybook": "npm run test:output",
     "storybook": "start-storybook -p 6006",
     "storybook:jest": "npm-run-all --parallel test:output storybook",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "declarations": "ttsc src/components/**/*.ts|tsx --emitDeclarationOnly",
+    "build": "webpack && npm run declarations"
   },
   "repository": {
     "type": "git",
@@ -53,7 +55,11 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.7",
     "jest-transform-stub": "^2.0.0",
-    "npm-run-all": "^4.1.5"
+    "mini-css-extract-plugin": "^1.6.2",
+    "npm-run-all": "^4.1.5",
+    "ttypescript": "^1.5.13",
+    "typescript-transform-paths": "^3.3.1",
+    "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
     "@bem-react/classname": "^1.5.12",
