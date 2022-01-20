@@ -1,4 +1,6 @@
 import '../src/base.css';
+import { withTests } from '@storybook/addon-jest';
+import results from '../jest-test-results.json';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -8,4 +10,8 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
+
+export const decorators = [
+  withTests({ results }),
+];

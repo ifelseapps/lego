@@ -4,8 +4,11 @@
   "description": "Design system",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll --json --outputFile=jest-test-results.json",
+    "test:output": "jest --json --outputFile=jest-test-results.json",
+    "prebuild:storybook": "npm run test:output",
     "storybook": "start-storybook -p 6006",
+    "storybook:jest": "npm-run-all --parallel test:output storybook",
     "build-storybook": "build-storybook"
   },
   "repository": {
@@ -21,17 +24,41 @@
   "homepage": "https://github.com/ifelseapps/lego#readme",
   "devDependencies": {
     "@babel/core": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
     "@storybook/addon-actions": "^6.4.13",
     "@storybook/addon-docs": "^6.4.13",
     "@storybook/addon-essentials": "^6.4.13",
+    "@storybook/addon-jest": "^6.4.13",
     "@storybook/addon-links": "^6.4.13",
     "@storybook/react": "^6.4.13",
+    "@types/enzyme": "^3.10.11",
+    "@types/jest": "^27.4.0",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
-    "babel-loader": "^8.2.3"
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.4.6",
+    "babel-loader": "^8.2.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.11.0",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.4.7",
+    "jest-transform-stub": "^2.0.0",
+    "npm-run-all": "^4.1.5"
   },
   "dependencies": {
+    "@svgr/webpack": "^6.2.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.9.1"
   }
 }
