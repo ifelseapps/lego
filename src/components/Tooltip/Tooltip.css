@@ -13,3 +13,7 @@
   opacity: 1;
   z-index: 99999;
 }
+
+.l-tooltip__trigger {
+  display: inline-flex;
+}

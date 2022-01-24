@@ -33,7 +33,7 @@ export const Tooltip: FC<ITooltipProps> = ({
 
   return (
     <>
-      <span ref={ref} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+      <span className={cnTooltip('trigger')} ref={ref} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         {children}
       </span>
       {/* TODO: positionX = right */}
