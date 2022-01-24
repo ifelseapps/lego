@@ -3,6 +3,7 @@ import { usePosition } from 'src/hooks/usePosition';
 import { isDomAvailable } from 'src/utils/dom';
 import { createPortal } from 'react-dom';
 import { IClassNameProps } from '@bem-react/core';
+import { classnames } from '@bem-react/classnames';
 
 interface IOverlayProps extends IClassNameProps {
   children: ReactElement;
@@ -27,7 +28,14 @@ export const Overlay: FC<IOverlayProps> = ({
   }
 
   return createPortal(
-    cloneElement(children, { className, style: { ...position } }),
+    cloneElement(
+      children,
+      {
+        ...children.props,
+        className: classnames(children.props.className, className),
+        style: { ...children.props.style, ...position },
+      },
+    ),
     document.body,
   );
 };
