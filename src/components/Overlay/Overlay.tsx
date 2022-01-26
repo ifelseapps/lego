@@ -1,9 +1,13 @@
-import React, { cloneElement, FC, ReactElement, RefObject } from 'react';
+import React, { cloneElement, FC, forwardRef, ReactElement, RefObject, useImperativeHandle } from 'react';
 import { usePosition } from 'src/hooks/usePosition';
 import { isDomAvailable } from 'src/utils/dom';
 import { createPortal } from 'react-dom';
 import { IClassNameProps } from '@bem-react/core';
 import { classnames } from '@bem-react/classnames';
+
+export interface IOverlayApi {
+  update(): void;
+}
 
 interface IOverlayProps extends IClassNameProps {
   children: ReactElement;
@@ -13,15 +17,17 @@ interface IOverlayProps extends IClassNameProps {
   marginY?: number;
 }
 
-export const Overlay: FC<IOverlayProps> = ({
+export const Overlay = forwardRef<IOverlayApi, IOverlayProps>(({
   children,
   className,
   triggerRef,
   positionX,
   marginX,
   marginY,
-}) => {
-  const position = usePosition({ triggerRef, positionX, marginX, marginY });
+}, ref) => {
+  const [position, update] = usePosition({ triggerRef, positionX, marginX, marginY });
+
+  useImperativeHandle(ref, () => ({ update }));
 
   if (!isDomAvailable() || !position) {
     return null;
@@ -38,7 +44,7 @@ export const Overlay: FC<IOverlayProps> = ({
     ),
     document.body,
   );
-};
+});
 
 Overlay.defaultProps = {
   marginX: 0,

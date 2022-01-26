@@ -4,6 +4,7 @@
   "description": "Design system",
   "types": "dist",
   "scripts": {
+    "start": "npm run storybook:jest",
     "test": "jest --watchAll --json --outputFile=jest-test-results.json",
     "test:output": "jest --json --outputFile=jest-test-results.json",
     "prebuild:storybook": "npm run test:output",

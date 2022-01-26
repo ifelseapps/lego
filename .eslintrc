@@ -27,6 +27,7 @@
     "*.js"
   ],
   "rules": {
+    "max-len": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "react/function-component-definition": "off",
     "react/jsx-filename-extension": [
@@ -35,6 +36,7 @@
         "extensions": [".ts", ".tsx"]
       }
     ],
+    "react/jsx-no-useless-fragment": "off",
     "react/jsx-props-no-spreading": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",

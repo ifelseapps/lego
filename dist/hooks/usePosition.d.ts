@@ -1,8 +1,8 @@
 import { RefObject } from 'react';
-interface IUsePositionResult {
+declare type Result = [IPosition, () => void];
+interface IPosition {
     top: number;
     left?: number;
-    right?: number;
 }
 interface IUsePositionParameters {
     triggerRef: RefObject<HTMLElement>;
@@ -10,5 +10,5 @@ interface IUsePositionParameters {
     marginX: number;
     marginY: number;
 }
-export declare function usePosition({ triggerRef, positionX, marginX, marginY }: IUsePositionParameters): IUsePositionResult;
+export declare function usePosition({ triggerRef, marginX, marginY }: IUsePositionParameters): Result;
 export {};

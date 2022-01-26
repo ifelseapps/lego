@@ -1,5 +1,8 @@
-import { FC, ReactElement, RefObject } from 'react';
+import React, { ReactElement, RefObject } from 'react';
 import { IClassNameProps } from '@bem-react/core';
+export interface IOverlayApi {
+    update(): void;
+}
 interface IOverlayProps extends IClassNameProps {
     children: ReactElement;
     triggerRef: RefObject<HTMLElement>;
@@ -7,5 +10,5 @@ interface IOverlayProps extends IClassNameProps {
     marginX?: number;
     marginY?: number;
 }
-export declare const Overlay: FC<IOverlayProps>;
+export declare const Overlay: React.ForwardRefExoticComponent<IOverlayProps & React.RefAttributes<IOverlayApi>>;
 export {};

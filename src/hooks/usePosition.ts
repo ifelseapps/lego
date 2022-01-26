@@ -1,9 +1,10 @@
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useCallback, useEffect, useState } from 'react';
 
-interface IUsePositionResult {
+type Result = [IPosition, () => void];
+
+interface IPosition {
   top: number;
   left?: number;
-  right?: number;
 }
 
 interface IUsePositionParameters {
@@ -13,17 +14,21 @@ interface IUsePositionParameters {
   marginY: number;
 }
 
-export function usePosition({ triggerRef, positionX = 'left', marginX = 0, marginY = 0 }: IUsePositionParameters): IUsePositionResult {
-  const [result, setResult] = useState<IUsePositionResult>(null);
+export function usePosition({ triggerRef, marginX = 0, marginY = 0 }: IUsePositionParameters): Result {
+  const [result, setResult] = useState<IPosition>(null);
 
-  useEffect(() => {
-    const coords = triggerRef.current.getBoundingClientRect();
+  const update = useCallback(
+    () => {
+      const coords = triggerRef.current.getBoundingClientRect();
+      setResult({
+        top: Math.floor(coords.top + marginY),
+        left: Math.floor(coords.left + marginX),
+      });
+    },
+    [marginX, marginY, triggerRef],
+  );
 
-    setResult({
-      top: Math.floor(coords.top + marginY),
-      left: Math.floor(coords.left + marginX),
-    });
-  }, [marginX, marginY, positionX, triggerRef]);
+  useEffect(() => update(), [update]);
 
-  return result;
+  return [result, update];
 }
