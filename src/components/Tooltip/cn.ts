@@ -1,3 +1,3 @@
-import { cn } from 'src/utils/cn';
+import { cn } from '../../utils/cn';
 
 export const cnTooltip = cn('tooltip');
