@@ -10,20 +10,14 @@ export default {
   component: Component,
 } as Meta;
 
-export const Base: FC = () => {
-  const [visible, setVisible] = useState(false);
+export const Base: FC<ITooltipProps> = (props) => {
   const [triggerEl, setTriggerEl] = useState<HTMLButtonElement>(null);
-  const clickHandler = () => {
-    setVisible((value) => !value);
-  };
   return (
     <div>
       <div>
-        <button ref={setTriggerEl} onClick={clickHandler}>
-          Click me!
-        </button>
+        <button ref={setTriggerEl}>Click me!</button>
       </div>
-      <Component element={triggerEl} visible={visible}>
+      <Component {...props} element={triggerEl}>
         <div>Inner content</div>
       </Component>
     </div>

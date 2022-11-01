@@ -28,7 +28,9 @@
   ],
   "rules": {
     "max-len": "off",
-    "implicit-arrow-linebreak": "below",
+    "implicit-arrow-linebreak": "off",
+    "consistent-return": "off",
+    "no-continue": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "react/function-component-definition": "off",
     "react/jsx-filename-extension": [
