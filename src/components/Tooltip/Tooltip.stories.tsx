@@ -10,7 +10,7 @@ export default {
   component: Component,
 } as Meta;
 
-export const Base: FC<ITooltipProps> = (props) => {
+const Template: FC<ITooltipProps> = (props) => {
   const [triggerEl, setTriggerEl] = useState<HTMLButtonElement>(null);
   return (
     <div>
@@ -22,4 +22,14 @@ export const Base: FC<ITooltipProps> = (props) => {
       </Component>
     </div>
   );
+};
+
+export const Hover = Template.bind({});
+Hover.args = {
+  trigger: 'hover',
+};
+
+export const Click = Template.bind({});
+Click.args = {
+  trigger: 'click',
 };

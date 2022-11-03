@@ -7,11 +7,12 @@ import './tooltip.css';
 
 export interface ITooltipProps {
   element: HTMLElement;
+  trigger: 'hover' | 'click';
 }
 
 const cnArrow = cnTooltip('arrow');
 
-export const Tooltip: FC<ITooltipProps> = ({ element, children }) => {
+export const Tooltip: FC<ITooltipProps> = ({ element, trigger, children }) => {
   const [arrowEl, setArrowEl] = useState<HTMLElement>(null);
   const [tooltipEl, setTooltipEl] = useState<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
@@ -49,10 +50,20 @@ export const Tooltip: FC<ITooltipProps> = ({ element, children }) => {
     const handler = () => {
       setVisible((value) => !value);
     };
-    element.addEventListener('click', handler);
+    // TODO: подумать над событиями
+    if (trigger === 'click') {
+      element.addEventListener('click', handler);
+    } else {
+      element.addEventListener('mouseenter', handler);
+      element.addEventListener('mouseleave', handler);
+    }
 
-    return () => element.removeEventListener('click', handler);
-  }, [element]);
+    return () => {
+      element.removeEventListener('click', handler);
+      element.removeEventListener('mouseenter', handler);
+      element.removeEventListener('mouseleave', handler);
+    }
+  }, [element, trigger]);
 
   return (
     <Portal visible={visible}>
