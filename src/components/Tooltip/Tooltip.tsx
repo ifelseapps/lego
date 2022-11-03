@@ -9,10 +9,35 @@ export interface ITooltipProps {
   element: HTMLElement;
 }
 
+const cnArrow = cnTooltip('arrow');
+
 export const Tooltip: FC<ITooltipProps> = ({ element, children }) => {
+  const [arrowEl, setArrowEl] = useState<HTMLElement>(null);
   const [tooltipEl, setTooltipEl] = useState<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
-  const { styles, attributes } = usePopper(element, tooltipEl);
+  const { styles, attributes } = usePopper(element, tooltipEl, {
+    placement: 'auto',
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: [0, 10],
+        },
+      },
+      {
+        name: 'arrow',
+        options: {
+          element: arrowEl,
+        },
+      },
+      {
+        name: 'flip',
+        options: {
+          fallbackPlacements: ['top', 'right'],
+        },
+      },
+    ],
+  });
 
   useOutsideClick([element, tooltipEl], () => setVisible(false));
 
@@ -37,6 +62,7 @@ export const Tooltip: FC<ITooltipProps> = ({ element, children }) => {
         style={styles.popper}
         {...attributes.popper}
       >
+        <div className={cnArrow} ref={setArrowEl} style={styles.arrow} {...attributes.arrow} />
         {children}
       </div>
     </Portal>

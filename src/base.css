@@ -5,6 +5,7 @@ html {
 :root {
   --color-primary: blue;
   --color-secondary: orange;
+  --color-tooltip-background: #212121;
 }
 
 .color-preview {

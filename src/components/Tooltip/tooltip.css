@@ -1,2 +1,44 @@
 .l-tooltip {
+  padding: 0.5em 0.8em;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  background-color: var(--color-tooltip-background);
+  color: #ffffff;
+  user-select: none;
+  cursor: default;
+}
+
+.l-tooltip__arrow,
+.l-tooltip__arrow::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+}
+
+.l-tooltip__arrow {
+  visibility: hidden;
+}
+
+.l-tooltip__arrow::before {
+  visibility: visible;
+  content: '';
+  transform: rotate(45deg);
+  border-radius: inherit;
+}
+
+.l-tooltip[data-popper-placement^='top'] > .l-tooltip__arrow {
+  bottom: -4px;
+}
+
+.l-tooltip[data-popper-placement^='bottom'] > .l-tooltip__arrow {
+  top: -4px;
+}
+
+.l-tooltip[data-popper-placement^='left'] > .l-tooltip__arrow {
+  right: -4px;
+}
+
+.l-tooltip[data-popper-placement^='right'] > .l-tooltip__arrow {
+  left: -4px;
 }

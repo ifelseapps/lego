@@ -14,7 +14,7 @@ export const Base: FC<ITooltipProps> = (props) => {
   const [triggerEl, setTriggerEl] = useState<HTMLButtonElement>(null);
   return (
     <div>
-      <div>
+      <div style={{ padding: 30 }}>
         <button ref={setTriggerEl}>Click me!</button>
       </div>
       <Component {...props} element={triggerEl}>
