@@ -9,7 +9,13 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended"
   ],
-  "plugins": ["react", "react-hooks", "jsx-a11y", "@typescript-eslint", "@bem-react"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "@typescript-eslint",
+    "@bem-react"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -21,12 +27,10 @@
     "mocha": true,
     "jest": true
   },
-  "ignorePatterns": [
-    "node_modules",
-    ".storybook",
-    "*.js"
-  ],
+  "ignorePatterns": ["node_modules", ".storybook", "*.js"],
   "rules": {
+    "no-plusplus": "off",
+    "operator-linebreak": "off",
     "max-len": "off",
     "implicit-arrow-linebreak": "off",
     "consistent-return": "off",
@@ -44,7 +48,7 @@
     "react/jsx-props-no-spreading": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/prop-types":"off",
+    "react/prop-types": "off",
     "object-curly-newline": "off",
     "no-multi-assign": "off",
     "no-use-before-define": "off",
