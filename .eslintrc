@@ -7,7 +7,8 @@
     "plugin:import/typescript",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "prettier"
   ],
   "plugins": [
     "react",
@@ -27,7 +28,11 @@
     "mocha": true,
     "jest": true
   },
-  "ignorePatterns": ["node_modules", ".storybook", "*.js"],
+  "ignorePatterns": [
+    "node_modules",
+    ".storybook",
+    "*.js"
+  ],
   "rules": {
     "no-plusplus": "off",
     "operator-linebreak": "off",
@@ -41,7 +46,10 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".ts", ".tsx"]
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
       }
     ],
     "react/jsx-no-useless-fragment": "off",
@@ -63,9 +71,17 @@
       {
         "defaultLevel": "common",
         "whiteList": {
-          "common": ["common"],
-          "desktop": ["common", "desktop"],
-          "mobile": ["common", "mobile"]
+          "common": [
+            "common"
+          ],
+          "desktop": [
+            "common",
+            "desktop"
+          ],
+          "mobile": [
+            "common",
+            "mobile"
+          ]
         }
       }
     ]
@@ -73,8 +89,13 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["."],
-        "extensions": [".ts", ".tsx"]
+        "paths": [
+          "."
+        ],
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
       }
     }
   }

@@ -20,7 +20,7 @@ const isLeapYear = (year: number) =>
 
 const getDaysInMonth = (month: number, year: number) =>
   [31, isLeapYear(year) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][
-    month
+  month
   ];
 
 const FIRST_DAY_OF_WEEK = 1;
